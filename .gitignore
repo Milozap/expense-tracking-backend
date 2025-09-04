@@ -1,0 +1,22 @@
+# Django
+.DS_Store
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment
+.env
+.env.dev
+.env.local
+.env.*.local
+
+# Database
+pgdata/
+
+# IDE
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
