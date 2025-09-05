@@ -1,0 +1,17 @@
+[tool.black]
+line-length = 88
+target-version = ["py310"]
+exclude = '''
+/(
+  \.git
+  | \.migrations
+  | __pycache__
+  | venv
+  | pgdata
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 88
+known_first_party = ["apps", "expense_tracking"]

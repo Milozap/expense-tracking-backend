@@ -17,6 +17,10 @@ RUN pip install --upgrade pip
 COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 
+ARG INSTALL_DEV=0
+COPY requirements-dev.txt /app/
+RUN if [ "$INSTALL_DEV" = "1" ]; then pip install --no-cache-dir -r requirements-dev.txt; fi
+
 COPY . /app/
 
 EXPOSE 8000

@@ -20,3 +20,6 @@ pgdata/
 
 # Logs
 *.log
+
+#Virtual Env
+.venv/
