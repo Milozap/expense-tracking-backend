@@ -31,3 +31,5 @@ precommit:
 
 install-hooks:
 	pre-commit install
+test:
+	 pytest --cov --cov-report term
