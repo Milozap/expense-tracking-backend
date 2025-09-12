@@ -25,5 +25,5 @@ class Category(models.Model):
     def __str__(self) -> str:
         return self.name
 
-    def admin_color(self):
+    def admin_color(self) -> str:
         return format_html(f'<span style="color: {self.color};">{self.color}</span>')

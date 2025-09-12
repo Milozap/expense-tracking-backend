@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PYTHONDONTWRITEBYTECODE: 1
-      DJANGO_SETTINGS_MODULE: expense_tracking.settings_test.py
+      DJANGO_SETTINGS_MODULE: expense_tracking.settings_test
 
     steps:
       - uses : actions/checkout@v4

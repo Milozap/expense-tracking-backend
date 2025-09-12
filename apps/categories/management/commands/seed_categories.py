@@ -1,8 +1,8 @@
 import os.path
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Tuple
 
 import yaml
-from django.core.management import BaseCommand, CommandError
+from django.core.management import BaseCommand, CommandError, CommandParser
 from django.db import transaction
 from django.utils.text import slugify
 
@@ -15,7 +15,7 @@ DEFAULT_COLOR = "#cccccc"
 class Command(BaseCommand):
     help = "Seed categories from given config .yml (defaults to config/categories.yml)"
 
-    def add_arguments(self, parser):
+    def add_arguments(self, parser: CommandParser) -> None:
         parser.add_argument(
             "--file",
             type=str,
@@ -40,9 +40,13 @@ class Command(BaseCommand):
         return data
 
     def _create_category(
-        self, name: str, category_type: str, parent=None, slug=None, color=DEFAULT_COLOR
-    ):
-        """Helper method to create a category with consistent logic."""
+        self,
+        name: str,
+        category_type: str,
+        parent: Category | None = None,
+        slug: str | None = None,
+        color: str = DEFAULT_COLOR,
+    ) -> Tuple[Category, bool]:
         if not slug:
             slug = slugify(name)
 
@@ -55,13 +59,16 @@ class Command(BaseCommand):
         )
         return category, created
 
-    def _process_category_tree(self, category_data: Dict[str, Any], category_type: str):
+    def _process_category_tree(
+        self, category_data: Dict[str, Any], category_type: str
+    ) -> int:
         """Process a single category node and its children."""
         # Create the parent category
+        parent_category_name = category_data.get("name") or ""
         parent_category, parent_created = self._create_category(
-            name=category_data["name"],
+            name=parent_category_name,
             category_type=category_type,
-            slug=category_data.get("slug") or slugify(category_data.get("name")),
+            slug=category_data.get("slug") or slugify(parent_category_name),
             color=category_data.get("color") or DEFAULT_COLOR,
         )
 
@@ -85,7 +92,7 @@ class Command(BaseCommand):
         return created_count
 
     @transaction.atomic
-    def handle(self, *args, **kwargs):
+    def handle(self, *args: Any, **kwargs: Any) -> None:
         data = self._load_yml(kwargs["file"])
 
         if kwargs["reset"]:
