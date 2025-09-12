@@ -13,7 +13,9 @@ services:
       retries: 10
 
   web:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: expense_web
     command: python manage.py runserver 0.0.0.0:8000
     volumes:

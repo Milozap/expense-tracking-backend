@@ -26,3 +26,6 @@ pgdata/
 
 # Test Coverage
 coverage.*
+
+# Static files
+static/

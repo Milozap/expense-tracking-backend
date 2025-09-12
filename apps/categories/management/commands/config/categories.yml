@@ -1,0 +1,121 @@
+INCOME:
+  - name: Salary
+    color: "#3b82f6"
+  - name: Side Hustle
+    color: "#2563eb"
+  - name: Investments
+    color: "#0ea5e9"
+    children:
+      - name: Dividends
+        color: "#38bdf8"
+      - name: Interest
+        color: "#22d3ee"
+      - name: Capital Gains
+        color: "#06b6d4"
+  - name: Gifts
+    color: "#60a5fa"
+  - name: Refunds & Reimbursements
+    color: "#93c5fd"
+
+EXPENSE:
+  - name: Housing
+    color: "#ef4444"
+    children:
+      - name: Rent
+        color: "#f87171"
+      - name: Mortgage
+        color: "#dc2626"
+      - name: Home Insurance
+        color: "#f43f5e"
+      - name: Maintenance
+        color: "#b91c1c"
+      - name: Property Tax
+        color: "#be123c"
+  - name: Utilities
+    color: "#f97316"
+    children:
+      - name: Electricity
+        color: "#fb923c"
+      - name: Water
+        color: "#fdba74"
+      - name: Gas
+        color: "#ea580c"
+      - name: Internet
+        color: "#f59e0b"
+      - name: Mobile
+        color: "#d97706"
+  - name: Food
+    color: "#22c55e"
+    children:
+      - name: Groceries
+        color: "#4ade80"
+      - name: Restaurants
+        color: "#16a34a"
+      - name: Coffee
+        color: "#10b981"
+      - name: Delivery
+        color: "#34d399"
+  - name: Transport
+    color: "#6366f1"
+    children:
+      - name: Public Transit
+        color: "#818cf8"
+      - name: Fuel
+        color: "#4f46e5"
+      - name: Taxi & Rideshare
+        color: "#4338ca"
+      - name: Parking
+        color: "#a5b4fc"
+      - name: Maintenance
+        color: "#7c3aed"
+  - name: Health
+    color: "#84cc16"
+    children:
+      - name: Pharmacy
+        color: "#65a30d"
+      - name: Doctor
+        color: "#a3e635"
+      - name: Dental
+        color: "#4d7c0f"
+      - name: Gym
+        color: "#16a34a"
+      - name: Insurance
+        color: "#15803d"
+  - name: Entertainment
+    color: "#e879f9"
+    children:
+      - name: Streaming
+        color: "#d946ef"
+      - name: Movies
+        color: "#a21caf"
+      - name: Games
+        color: "#c026d3"
+      - name: Hobbies
+        color: "#eab308"
+  - name: Education
+    color: "#06b6d4"
+    children:
+      - name: Tuition
+        color: "#0891b2"
+      - name: Books
+        color: "#22d3ee"
+      - name: Courses
+        color: "#67e8f9"
+  - name: Personal Care
+    color: "#f472b6"
+    children:
+      - name: Clothing
+        color: "#ec4899"
+      - name: Hair & Beauty
+        color: "#db2777"
+  - name: Travel
+    color: "#94a3b8"
+    children:
+      - name: Flights
+        color: "#64748b"
+      - name: Lodging
+        color: "#475569"
+      - name: Local Transport
+        color: "#334155"
+  - name: Miscellaneous
+    color: "#9ca3af"

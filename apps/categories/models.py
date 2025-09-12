@@ -1,4 +1,6 @@
+from colorfield.fields import ColorField
 from django.db import models
+from django.utils.html import format_html
 
 
 class Category(models.Model):
@@ -12,7 +14,7 @@ class Category(models.Model):
         "self", null=True, blank=True, on_delete=models.PROTECT, related_name="children"
     )
     slug = models.SlugField(max_length=80, unique=True)
-    color = models.CharField(max_length=7, blank=True)
+    color = ColorField(default="#FF0000")
 
     class Meta:
         unique_together = [("name", "parent", "type")]
@@ -22,3 +24,6 @@ class Category(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
+    def admin_color(self):
+        return format_html(f'<span style="color: {self.color};">{self.color}</span>')
