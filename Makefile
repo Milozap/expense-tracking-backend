@@ -31,5 +31,12 @@ precommit:
 
 install-hooks:
 	pre-commit install
+
 test:
 	 pytest --cov --cov-report term
+
+seed-categories:
+	docker compose -f docker-compose.yml exec expense_web python manage.py seed_categories
+
+collectstatic:
+	docker compose -f docker-compose.yml exec expense_web python manage.py collectstatic

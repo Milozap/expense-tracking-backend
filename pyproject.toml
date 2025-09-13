@@ -7,6 +7,7 @@ exclude = '''
   | \.migrations
   | __pycache__
   | venv
+  | .venv
   | pgdata
 )/
 '''
@@ -15,3 +16,38 @@ exclude = '''
 profile = "black"
 line_length = 88
 known_first_party = ["apps", "expense_tracking"]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+
+testpaths = [
+  "tests",
+  "apps",
+]
+
+norecursedirs = [
+  "migrations",
+  ".git",
+  "__pycache__",
+  "node_modules",
+  "venv",
+  ".venv",
+]
+
+python_files = ["tests.py", "test_*.py", "*_tests.py"]
+
+addopts = [
+  "-ra",
+  "--strict-markers",
+  "--ignore=manage.py",
+  "--ignore-glob=**/migrations/**",
+  "-p no:warnings",
+  "--no-migrations",
+  "--reuse-db"
+]
+
+DJANGO_SETTINGS_MODULE = "expense_tracking.settings_test"
+markers = [
+  "django_db: mark test as requiring database access",
+  "slow: slow tests",
+]
