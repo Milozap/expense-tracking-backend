@@ -11,11 +11,11 @@ class Transaction(models.Model):
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.user_id} - {self.description} - {self.amount}"
 
-    def type(self):
+    def type(self) -> str:
         return self.category.type
 
-    def admin_color(self):
+    def admin_color(self) -> str:
         return self.category.admin_color()
