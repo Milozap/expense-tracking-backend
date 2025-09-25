@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     "corsheaders",
     "drf_spectacular",
     "colorfield",
-    "apps.categories",
+    "apps.categories.apps.CategoriesConfig",
+    "apps.transactions.apps.TransactionsConfig",
 ]
 
 MIDDLEWARE = [
