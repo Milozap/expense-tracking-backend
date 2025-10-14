@@ -8,9 +8,8 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
       build-essential libpq-dev postgresql-client \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN pip install --upgrade pip
+    && rm -rf /var/lib/apt/lists/* \
+    && pip install --upgrade pip
 
 COPY requirements/ /app/requirements/
 RUN pip install -r requirements/base.txt
