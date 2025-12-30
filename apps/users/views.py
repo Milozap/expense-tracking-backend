@@ -1,7 +1,9 @@
 import logging
+from typing import Any
 
 from rest_framework import permissions, status
 from rest_framework.generics import CreateAPIView
+from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.throttling import AnonRateThrottle
 from rest_framework_simplejwt.tokens import RefreshToken
@@ -16,7 +18,7 @@ class UserRegistrationView(CreateAPIView):
     permission_classes = [permissions.AllowAny]
     throttle_classes = [AnonRateThrottle]
 
-    def create(self, request, *args, **kwargs):
+    def create(self, request: Request, *args: Any, **kwargs: Any) -> Response:
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.save()

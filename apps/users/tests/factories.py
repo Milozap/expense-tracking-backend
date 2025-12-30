@@ -9,7 +9,7 @@ class SuperUserFactory(factory.django.DjangoModelFactory):
 
     first_name = factory.Faker("first_name")
     last_name = factory.Faker("last_name")
-    username = factory.Faker("username")
+    username = factory.Faker("user_name")
     email = factory.Faker("email")
     password = factory.LazyFunction(lambda: make_password("pi3.1415"))
     is_staff = True

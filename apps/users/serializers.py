@@ -22,7 +22,7 @@ class UserSerializer(serializers.ModelSerializer):
         )
         extra_kwargs = {"email": {"required": True}}
 
-    def validate_email(self, data) -> str:
+    def validate_email(self, data: str) -> str:
         data = data.lower()
         if User.objects.filter(email__iexact=data).exists():
             raise serializers.ValidationError("User with this email already exists")
@@ -34,18 +34,20 @@ class UserSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("This username is reserved")
         return value
 
-    def validate(self, data) -> dict:
+    def validate(self, data: dict) -> dict:
         if data.get("password") != data.get("password_confirm"):
             raise serializers.ValidationError({"password": "Passwords don't match"})
 
-        try:
-            password_validation.validate_password(data.get("password"))
-        except ValidationError as e:
-            raise serializers.ValidationError({"password": list(e.messages)})
+        password = data.get("password")
+        if password:
+            try:
+                password_validation.validate_password(password)
+            except ValidationError as e:
+                raise serializers.ValidationError({"password": list(e.messages)})
 
         return data
 
-    def create(self, validated_data) -> User:
+    def create(self, validated_data: dict) -> User:
         validated_data.pop("password_confirm")
 
         return User.objects.create_user(**validated_data)

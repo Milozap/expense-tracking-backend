@@ -2,7 +2,7 @@ import factory
 
 from apps.categories.tests.factories import CategoryFactory
 from apps.transactions.models import Transaction
-from apps.users.factories import SuperUserFactory
+from apps.users.tests.factories import SuperUserFactory
 
 
 class TransactionFactory(factory.django.DjangoModelFactory):

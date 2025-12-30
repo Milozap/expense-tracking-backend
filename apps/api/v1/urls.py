@@ -9,7 +9,7 @@ router = DefaultRouter()
 router.register(r"categories", CategoryViewSet, basename="category")
 router.register(r"transactions", TransactionViewSet, basename="transaction")
 
-urlpatterns = [path("", include(router.urls))]
-urlpatterns += [
+urlpatterns = [
+    path("", include(router.urls)),
     path("auth/register", UserRegistrationView.as_view(), name="user-register"),
 ]
